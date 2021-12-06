@@ -32,7 +32,7 @@ let CardGame = () => {
         setPlayerHands(playerHandsCopy)
     }
 
-    useState(()=>{
+    useEffect(()=>{
         console.log("PLAYER HANDS CHANGED", playerHands)
     },playerHands)
 
@@ -65,6 +65,7 @@ let CardGame = () => {
         if(!currentErrors.length){
             togglePlayerOptions(false)
             dealCards()
+            setErrors([])
         }
         else setErrors(currentErrors)
 
@@ -91,9 +92,7 @@ let CardGame = () => {
             <div>
                 {playerHands && playerHands.map(hand => {
                     <div>
-                        {hand.map(card=>{
-                            <div>{card}</div>
-                        })}
+                        {hand.map(card=>{<div>{card}</div>})}
                     </div>
                 })}
             </div>
